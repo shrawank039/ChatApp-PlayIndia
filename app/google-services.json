@@ -1,33 +1,153 @@
 {
   "project_info": {
-    "project_number": "319933494144",
-    "project_id": "chatsapp-256e0",
-    "storage_bucket": "chatsapp-256e0.appspot.com"
+    "project_number": "860805084641",
+    "firebase_url": "https://satta-matka-d090f.firebaseio.com",
+    "project_id": "satta-matka-d090f",
+    "storage_bucket": "satta-matka-d090f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:319933494144:android:95416a5705e1abe455c765",
+        "mobilesdk_app_id": "1:860805084641:android:dfd04ee761000b76a3cea0",
         "android_client_info": {
-          "package_name": "com.mianasad.chatsapp"
+          "package_name": "com.matrixdeveloper.matkaplayi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "319933494144-7r6vm4qv5j975s66qq2j9ptgjfl6jrai.apps.googleusercontent.com",
+          "client_id": "860805084641-m222opptiufgoujrllkmi01pgbu9mm93.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.matrixdeveloper.matkaplayi",
+            "certificate_hash": "4134c32671b597ba0c4b6ee68298f4ffb9a262f1"
+          }
+        },
+        {
+          "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDncUXq0RIf1GAmV-Re7xDG2aZx5jHZUAQ"
+          "current_key": "AIzaSyDDrxRRk1vR-DsayII-DuzIyY13yuqcIgk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "319933494144-7r6vm4qv5j975s66qq2j9ptgjfl6jrai.apps.googleusercontent.com",
+              "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860805084641:android:9e3f08cd4194de4ea3cea0",
+        "android_client_info": {
+          "package_name": "com.matrixdeveloper.sattamatka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860805084641-5ir505lautf603rmlp1pkmm1va65pc08.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.matrixdeveloper.sattamatka",
+            "certificate_hash": "4134c32671b597ba0c4b6ee68298f4ffb9a262f1"
+          }
+        },
+        {
+          "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDrxRRk1vR-DsayII-DuzIyY13yuqcIgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860805084641:android:039c8096688aa915a3cea0",
+        "android_client_info": {
+          "package_name": "com.matrixdeveloper.superkingsmatka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860805084641-tucdqf8htdigu54nkvk04e71semoeamp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.matrixdeveloper.superkingsmatka",
+            "certificate_hash": "4134c32671b597ba0c4b6ee68298f4ffb9a262f1"
+          }
+        },
+        {
+          "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDrxRRk1vR-DsayII-DuzIyY13yuqcIgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860805084641:android:bfe738923d791193a3cea0",
+        "android_client_info": {
+          "package_name": "com.mianasad.chatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860805084641-flbc76o2uhgq8c8obue4b5qhlekeb36j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mianasad.chatsapp",
+            "certificate_hash": "4134c32671b597ba0c4b6ee68298f4ffb9a262f1"
+          }
+        },
+        {
+          "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDrxRRk1vR-DsayII-DuzIyY13yuqcIgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

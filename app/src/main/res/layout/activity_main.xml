@@ -8,6 +8,7 @@
     tools:context=".Activities.MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:visibility="gone"
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +35,7 @@
         tools:listitem="@layout/row_conversation" />
 
     <com.cooltechworks.views.shimmer.ShimmerRecyclerView
+        android:visibility="gone"
         android:id="@+id/statusList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

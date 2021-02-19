@@ -10,19 +10,19 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mobile_auth" />
+        app:srcCompat="@drawable/logo_transparent" />
 
     <TextView
         android:id="@+id/phoneLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Verify your phone number"
+        android:text="Admin Chat Login"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -64,10 +64,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/textbox_outline"
-                android:ems="10"
-                android:hint="Type your phone number"
-                android:padding="10dp"
-                android:phoneNumber="true" />
+                android:maxLength="10"
+                android:hint="Phone"
+                android:padding="10dp" />
 
             <Button
                 android:id="@+id/continueBtn"

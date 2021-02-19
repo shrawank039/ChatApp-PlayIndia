@@ -3,19 +3,27 @@ package com.mianasad.chatsapp.Adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.github.pgreze.reactions.ReactionPopup;
 import com.github.pgreze.reactions.ReactionsConfig;
 import com.github.pgreze.reactions.ReactionsConfigBuilder;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.mianasad.chatsapp.Models.Message;
 import com.mianasad.chatsapp.R;
 import com.mianasad.chatsapp.databinding.DeleteDialogBinding;
@@ -119,6 +127,36 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             SentViewHolder viewHolder = (SentViewHolder)holder;
             viewHolder.binding.message.setText(message.getMessage());
 
+            if (!message.getImageUrl().equalsIgnoreCase("") && message.getImageUrl() !=null){
+                String imageUrl = message.getImageUrl();
+                viewHolder.binding.message.setVisibility(View.GONE);
+                if (imageUrl.startsWith("gs://")) {
+                    StorageReference storageReference = FirebaseStorage.getInstance()
+                            .getReferenceFromUrl(imageUrl);
+                    storageReference.getDownloadUrl().addOnCompleteListener(
+                            new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if (task.isSuccessful()) {
+                                        String downloadUrl = task.getResult().toString();
+                                        Glide.with(context)
+                                                .load(downloadUrl)
+                                                .into(viewHolder.binding.messageImageView);
+                                    } else {
+                                        Log.w("TAG", "Getting download url was not successful.",
+                                                task.getException());
+                                    }
+                                }
+                            });
+                } else {
+                    Glide.with(context)
+                            .load(message.getImageUrl())
+                            .into(viewHolder.binding.messageImageView);
+                }
+            }else {
+                viewHolder.binding.message.setVisibility(View.VISIBLE);
+            }
+
             if(message.getFeeling() >= 0) {
                 viewHolder.binding.feeling.setImageResource(reactions[message.getFeeling()]);
                 viewHolder.binding.feeling.setVisibility(View.VISIBLE);
@@ -126,13 +164,13 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                 viewHolder.binding.feeling.setVisibility(View.GONE);
             }
 
-            viewHolder.binding.message.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    popup.onTouch(v, event);
-                    return false;
-                }
-            });
+//            viewHolder.binding.message.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    popup.onTouch(v, event);
+//                    return false;
+//                }
+//            });
 
             viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -188,9 +226,40 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                     return false;
                 }
             });
+
         } else {
             ReceiverViewHolder viewHolder = (ReceiverViewHolder)holder;
             viewHolder.binding.message.setText(message.getMessage());
+
+            if (!message.getImageUrl().equalsIgnoreCase("") && message.getImageUrl() !=null){
+                viewHolder.binding.message.setVisibility(View.GONE);
+                String imageUrl = message.getImageUrl();
+                if (imageUrl.startsWith("gs://")) {
+                    StorageReference storageReference = FirebaseStorage.getInstance()
+                            .getReferenceFromUrl(imageUrl);
+                    storageReference.getDownloadUrl().addOnCompleteListener(
+                            new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if (task.isSuccessful()) {
+                                        String downloadUrl = task.getResult().toString();
+                                        Glide.with(context)
+                                                .load(downloadUrl)
+                                                .into(viewHolder.binding.messageImageView);
+                                    } else {
+                                        Log.w("TAG", "Getting download url was not successful.",
+                                                task.getException());
+                                    }
+                                }
+                            });
+                } else {
+                    Glide.with(context)
+                            .load(message.getImageUrl())
+                            .into(viewHolder.binding.messageImageView);
+                }
+            }else {
+                viewHolder.binding.message.setVisibility(View.VISIBLE);
+            }
 
             if(message.getFeeling() >= 0) {
                 //message.setFeeling(reactions[message.getFeeling()]);
@@ -200,13 +269,13 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                 viewHolder.binding.feeling.setVisibility(View.GONE);
             }
 
-            viewHolder.binding.message.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    popup.onTouch(v, event);
-                    return false;
-                }
-            });
+//            viewHolder.binding.message.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    popup.onTouch(v, event);
+//                    return false;
+//                }
+//            });
 
             viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
