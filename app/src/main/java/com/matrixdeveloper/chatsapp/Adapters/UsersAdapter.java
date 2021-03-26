@@ -1,4 +1,4 @@
-package com.mianasad.chatsapp.Adapters;
+package com.matrixdeveloper.chatsapp.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +15,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mianasad.chatsapp.Activities.ChatActivity;
-import com.mianasad.chatsapp.R;
-import com.mianasad.chatsapp.Models.User;
-import com.mianasad.chatsapp.databinding.RowConversationBinding;
+import com.matrixdeveloper.chatsapp.Activities.ChatActivity;
+import com.matrixdeveloper.chatsapp.R;
+import com.matrixdeveloper.chatsapp.Models.User;
+import com.matrixdeveloper.chatsapp.databinding.RowConversationBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,7 +47,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
         User user = users.get(position);
 
         String senderId = FirebaseAuth.getInstance().getUid();
-
         String senderRoom = senderId + user.getUid();
 
         FirebaseDatabase.getInstance().getReference()
@@ -73,6 +72,10 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
                     }
                 });
 
+        if (user.getAdmin()!=null){
+        if (user.getAdmin().equalsIgnoreCase("1")){
+            holder.binding.unreadBadge.setVisibility(View.VISIBLE);
+        }}
 
         holder.binding.username.setText(user.getName());
 

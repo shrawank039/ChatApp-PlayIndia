@@ -1,18 +1,46 @@
-package com.mianasad.chatsapp.Models;
+package com.matrixdeveloper.chatsapp.Models;
 
 public class User {
 
-    private String uid, name, phoneNumber, profileImage;
+    private String uid, name, phoneNumber, profileImage,admin,user;
+    private long timestamp;
 
     public User() {
 
     }
 
-    public User(String uid, String name, String phoneNumber, String profileImage) {
+    public User(String uid, String name, String phoneNumber, String profileImage,String admin,String user, long timestamp) {
         this.uid = uid;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.profileImage = profileImage;
+        this.admin = admin;
+        this.user = user;
+        this.timestamp = timestamp;
+    }
+
+    public String getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(String admin) {
+        this.admin = admin;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getUid() {

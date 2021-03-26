@@ -30,10 +30,27 @@
         app:layout_constraintTop_toTopOf="@+id/profile" />
 
     <TextView
+        android:id="@+id/unread_badge"
+        android:layout_width="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_height="15dp"
+        android:background="@drawable/unread_count_text_bg"
+        android:gravity="center"
+        android:text="new"
+        android:textSize="10sp"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/username"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
         android:id="@+id/lastMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tap to chat"
+        android:textColor="@color/grey"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/username" />
@@ -44,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text=""
+        android:textColor="@color/greenDark"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +71,7 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="#E4E4E4"
+        android:background="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile" />

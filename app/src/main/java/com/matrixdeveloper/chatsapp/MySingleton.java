@@ -1,4 +1,4 @@
-package com.mianasad.chatsapp;
+package com.matrixdeveloper.chatsapp;
 
 import android.content.Context;
 import android.graphics.Bitmap;

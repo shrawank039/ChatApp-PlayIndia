@@ -1,4 +1,4 @@
-package com.mianasad.chatsapp.Activities;
+package com.matrixdeveloper.chatsapp.Activities;
 
 
 import android.app.ProgressDialog;
@@ -25,9 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.mianasad.chatsapp.Models.User;
-import com.mianasad.chatsapp.MySingleton;
-import com.mianasad.chatsapp.databinding.ActivitySetupProfileBinding;
+import com.matrixdeveloper.chatsapp.Models.User;
+import com.matrixdeveloper.chatsapp.MySingleton;
+import com.matrixdeveloper.chatsapp.databinding.ActivitySetupProfileBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -96,7 +96,9 @@ public class SetupProfileActivity extends AppCompatActivity {
                                         String phone = auth.getCurrentUser().getPhoneNumber();
                                         String name = binding.nameBox.getText().toString();
 
-                                        User user = new User(uid, name, phone, imageUrl);
+                                        Date date = new Date();
+
+                                        User user = new User(uid, name, phone, imageUrl,"0","0", date.getTime());
 
                                         database.getReference()
                                                 .child("users")
@@ -118,7 +120,9 @@ public class SetupProfileActivity extends AppCompatActivity {
                     String uid = auth.getUid();
                     String phone = auth.getCurrentUser().getPhoneNumber();
 
-                    User user = new User(uid, name, phone, "No Image");
+                    Date date = new Date();
+
+                    User user = new User(uid, name, phone, "No Image","0","0", date.getTime());
 
                     database.getReference()
                             .child("users")

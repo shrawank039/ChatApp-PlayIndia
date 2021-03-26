@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mianasad.chatsapp">
+    package="com.matrixdeveloper.chatsapp">
 
     <application
         android:allowBackup="true"
@@ -13,15 +13,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
-        <activity android:name=".Activities.ChatActivity">
+        <activity android:name="com.matrixdeveloper.chatsapp.Activities.ChatActivity">
 
         </activity>
-        <activity android:name=".Activities.SetupProfileActivity" />
+        <activity android:name="com.matrixdeveloper.chatsapp.Activities.SetupProfileActivity" />
         <activity
-            android:name=".Activities.OTPActivity"
+            android:name="com.matrixdeveloper.chatsapp.Activities.OTPActivity"
             android:windowSoftInputMode="stateVisible" />
         <activity
-            android:name=".Activities.PhoneNumberActivity"
+            android:name="com.matrixdeveloper.chatsapp.Activities.PhoneNumberActivity"
             android:windowSoftInputMode="stateVisible">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity"
+        <activity android:name="com.matrixdeveloper.chatsapp.Activities.MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden"/>
 
         <meta-data

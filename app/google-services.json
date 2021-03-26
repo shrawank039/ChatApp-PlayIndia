@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:860805084641:android:4820b58e44d738eca3cea0",
+        "android_client_info": {
+          "package_name": "com.matrixdeveloper.chatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDrxRRk1vR-DsayII-DuzIyY13yuqcIgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:860805084641:android:dfd04ee761000b76a3cea0",
         "android_client_info": {
           "package_name": "com.matrixdeveloper.matkaplayi"
@@ -45,17 +74,17 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:860805084641:android:9e3f08cd4194de4ea3cea0",
+        "mobilesdk_app_id": "1:860805084641:android:42538f77ceffc094a3cea0",
         "android_client_info": {
-          "package_name": "com.matrixdeveloper.sattamatka"
+          "package_name": "com.matrixdeveloper.playindia"
         }
       },
       "oauth_client": [
         {
-          "client_id": "860805084641-5ir505lautf603rmlp1pkmm1va65pc08.apps.googleusercontent.com",
+          "client_id": "860805084641-t0dug11uojcv5plq4qli9jkghrhdu59r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.matrixdeveloper.sattamatka",
+            "package_name": "com.matrixdeveloper.playindia",
             "certificate_hash": "4134c32671b597ba0c4b6ee68298f4ffb9a262f1"
           }
         },
@@ -93,43 +122,6 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.matrixdeveloper.superkingsmatka",
-            "certificate_hash": "4134c32671b597ba0c4b6ee68298f4ffb9a262f1"
-          }
-        },
-        {
-          "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDDrxRRk1vR-DsayII-DuzIyY13yuqcIgk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "860805084641-89mhus1s0u9tmmklkq1st1d8q3kt4udj.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:860805084641:android:bfe738923d791193a3cea0",
-        "android_client_info": {
-          "package_name": "com.mianasad.chatsapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "860805084641-flbc76o2uhgq8c8obue4b5qhlekeb36j.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mianasad.chatsapp",
             "certificate_hash": "4134c32671b597ba0c4b6ee68298f4ffb9a262f1"
           }
         },

@@ -1,4 +1,4 @@
-package com.mianasad.chatsapp.Models;
+package com.matrixdeveloper.chatsapp.Models;
 
 public class Status {
     private String imageUrl;

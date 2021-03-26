@@ -1,4 +1,4 @@
-package com.mianasad.chatsapp.Activities;
+package com.matrixdeveloper.chatsapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.mianasad.chatsapp.databinding.ActivityPhoneNumberBinding;
+import com.matrixdeveloper.chatsapp.databinding.ActivityPhoneNumberBinding;
 
 public class PhoneNumberActivity extends AppCompatActivity {
 

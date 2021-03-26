@@ -1,4 +1,4 @@
-package com.mianasad.chatsapp.Adapters;
+package com.matrixdeveloper.chatsapp.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,13 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.mianasad.chatsapp.Activities.MainActivity;
-import com.mianasad.chatsapp.Models.Status;
-import com.mianasad.chatsapp.Models.User;
-import com.mianasad.chatsapp.Models.UserStatus;
-import com.mianasad.chatsapp.R;
-import com.mianasad.chatsapp.databinding.ItemSentBinding;
-import com.mianasad.chatsapp.databinding.ItemStatusBinding;
+import com.matrixdeveloper.chatsapp.Activities.MainActivity;
+import com.matrixdeveloper.chatsapp.Models.Status;
+import com.matrixdeveloper.chatsapp.Models.UserStatus;
+import com.matrixdeveloper.chatsapp.R;
+import com.matrixdeveloper.chatsapp.databinding.ItemSentBinding;
+import com.matrixdeveloper.chatsapp.databinding.ItemStatusBinding;
 
 import java.util.ArrayList;
 

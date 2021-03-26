@@ -1,4 +1,4 @@
-package com.mianasad.chatsapp.Activities;
+package com.matrixdeveloper.chatsapp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,10 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,19 +20,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.mianasad.chatsapp.Adapters.TopStatusAdapter;
-import com.mianasad.chatsapp.Models.Status;
-import com.mianasad.chatsapp.Models.UserStatus;
-import com.mianasad.chatsapp.R;
-import com.mianasad.chatsapp.Models.User;
-import com.mianasad.chatsapp.Adapters.UsersAdapter;
-import com.mianasad.chatsapp.databinding.ActivityMainBinding;
+import com.matrixdeveloper.chatsapp.Adapters.TopStatusAdapter;
+import com.matrixdeveloper.chatsapp.Models.Status;
+import com.matrixdeveloper.chatsapp.Models.UserStatus;
+import com.matrixdeveloper.chatsapp.R;
+import com.matrixdeveloper.chatsapp.Models.User;
+import com.matrixdeveloper.chatsapp.Adapters.UsersAdapter;
+import com.matrixdeveloper.chatsapp.databinding.ActivityMainBinding;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -67,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         users = new ArrayList<>();
         userStatuses = new ArrayList<>();
 
+        Query chatQuery = database.getReference().child("users").orderByChild("lastMsgTime").limitToLast(20);
+
         database.getReference().child("users").child(FirebaseAuth.getInstance().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -83,18 +82,23 @@ public class MainActivity extends AppCompatActivity {
 
         usersAdapter = new UsersAdapter(this, users);
         statusAdapter = new TopStatusAdapter(this, userStatuses);
-//        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         binding.statusList.setLayoutManager(layoutManager);
         binding.statusList.setAdapter(statusAdapter);
+
+        LinearLayoutManager verLayoutManager = new LinearLayoutManager(this);
+        verLayoutManager.setReverseLayout(true);
+        verLayoutManager.setStackFromEnd(true);
+        binding.recyclerView.setLayoutManager(verLayoutManager);
 
         binding.recyclerView.setAdapter(usersAdapter);
 
         binding.recyclerView.showShimmerAdapter();
         binding.statusList.showShimmerAdapter();
 
-        database.getReference().child("users").addValueEventListener(new ValueEventListener() {
+        chatQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();

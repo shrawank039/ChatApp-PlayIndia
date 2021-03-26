@@ -1,4 +1,4 @@
-package com.mianasad.chatsapp.Activities;
+package com.matrixdeveloper.chatsapp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,16 +17,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.mianasad.chatsapp.Adapters.MessagesAdapter;
-import com.mianasad.chatsapp.Models.Message;
-import com.mianasad.chatsapp.R;
-import com.mianasad.chatsapp.databinding.ActivityChatBinding;
+import com.matrixdeveloper.chatsapp.Adapters.MessagesAdapter;
+import com.matrixdeveloper.chatsapp.Models.Message;
+import com.matrixdeveloper.chatsapp.databinding.ActivityChatBinding;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,6 +43,7 @@ public class ChatActivity extends AppCompatActivity {
     String senderUid;
     private String mPhotoUrl="";
     private static final String LOADING_IMAGE_URL = "https://www.google.com/images/spin-32.gif";
+    String receiverUid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +56,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
         String name = getIntent().getStringExtra("name");
-        String receiverUid = getIntent().getStringExtra("uid");
+        receiverUid = getIntent().getStringExtra("uid");
 
         senderUid = FirebaseAuth.getInstance().getUid();
         mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -75,6 +73,10 @@ public class ChatActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         //     mPhotoUrl = Objects.requireNonNull(mFirebaseUser.getPhotoUrl()).toString();
+
+        HashMap<String, Object> msgStatus = new HashMap<>();
+        msgStatus.put("admin", "0");
+        database.getReference().child("users").child(receiverUid).updateChildren(msgStatus);
 
         database.getReference().child("chats")
                 .child(senderRoom)
@@ -125,6 +127,12 @@ public class ChatActivity extends AppCompatActivity {
                 HashMap<String, Object> lastMsgObj = new HashMap<>();
                 lastMsgObj.put("lastMsg", message.getMessage());
                 lastMsgObj.put("lastMsgTime", date.getTime());
+
+                HashMap<String, Object> msgStatus = new HashMap<>();
+                msgStatus.put("user", "1");
+                msgStatus.put("lastMsgTime", date.getTime());
+
+                database.getReference().child("users").child(receiverUid).updateChildren(msgStatus);
 
                 database.getReference().child("chats").child(senderRoom).updateChildren(lastMsgObj);
                 database.getReference().child("chats").child(receiverRoom).updateChildren(lastMsgObj);
@@ -184,8 +192,6 @@ public class ChatActivity extends AppCompatActivity {
                     database.getReference().child("chats").child(receiverRoom).updateChildren(lastMsgObj);
 
                     assert randomKey != null;
-
-
                     StorageReference storageReference =
                             FirebaseStorage.getInstance()
                                     .getReference(mFirebaseUser.getUid())
@@ -216,8 +222,6 @@ public class ChatActivity extends AppCompatActivity {
                                                         Message message = new Message("", senderUid, date.getTime(),mPhotoUrl,task.getResult().toString());
                                                         binding.messageBox.setText("");
 
-                                                        String randomKey = database.getReference().push().getKey();
-
                                                         HashMap<String, Object> lastMsgObj = new HashMap<>();
                                                         lastMsgObj.put("lastMsg", message.getMessage());
                                                         lastMsgObj.put("lastMsgTime", date.getTime());
@@ -225,18 +229,18 @@ public class ChatActivity extends AppCompatActivity {
                                                         database.getReference().child("chats").child(senderRoom).updateChildren(lastMsgObj);
                                                         database.getReference().child("chats").child(receiverRoom).updateChildren(lastMsgObj);
 
-                                                        assert randomKey != null;
+                                                        assert key != null;
                                                         database.getReference().child("chats")
                                                                 .child(senderRoom)
                                                                 .child("messages")
-                                                                .child(randomKey)
+                                                                .child(key)
                                                                 .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void aVoid) {
                                                                 database.getReference().child("chats")
                                                                         .child(receiverRoom)
                                                                         .child("messages")
-                                                                        .child(randomKey)
+                                                                        .child(key)
                                                                         .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                     @Override
                                                                     public void onSuccess(Void aVoid) {

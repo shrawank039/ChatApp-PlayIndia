@@ -1,4 +1,4 @@
-package com.mianasad.chatsapp;
+package com.matrixdeveloper.chatsapp;
 
 import org.junit.Test;
 

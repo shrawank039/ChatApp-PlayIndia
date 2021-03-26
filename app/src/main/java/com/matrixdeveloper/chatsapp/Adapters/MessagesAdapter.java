@@ -1,15 +1,12 @@
-package com.mianasad.chatsapp.Adapters;
+package com.matrixdeveloper.chatsapp.Adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,14 +21,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.mianasad.chatsapp.Models.Message;
-import com.mianasad.chatsapp.R;
-import com.mianasad.chatsapp.databinding.DeleteDialogBinding;
-import com.mianasad.chatsapp.databinding.ItemReceiveBinding;
-import com.mianasad.chatsapp.databinding.ItemSentBinding;
+import com.matrixdeveloper.chatsapp.Models.Message;
+import com.matrixdeveloper.chatsapp.R;
+import com.matrixdeveloper.chatsapp.databinding.DeleteDialogBinding;
+import com.matrixdeveloper.chatsapp.databinding.ItemReceiveBinding;
+import com.matrixdeveloper.chatsapp.databinding.ItemSentBinding;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MessagesAdapter extends RecyclerView.Adapter {
 
