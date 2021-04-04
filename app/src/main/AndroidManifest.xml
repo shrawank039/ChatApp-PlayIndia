@@ -13,15 +13,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
-        <activity android:name="com.matrixdeveloper.chatsapp.Activities.ChatActivity">
-
-        </activity>
-        <activity android:name="com.matrixdeveloper.chatsapp.Activities.SetupProfileActivity" />
+        <activity android:name=".Activities.ChatActivity"></activity>
+        <activity android:name=".Activities.SetupProfileActivity" />
         <activity
-            android:name="com.matrixdeveloper.chatsapp.Activities.OTPActivity"
+            android:name=".Activities.OTPActivity"
             android:windowSoftInputMode="stateVisible" />
         <activity
-            android:name="com.matrixdeveloper.chatsapp.Activities.PhoneNumberActivity"
+            android:name=".Activities.PhoneNumberActivity"
             android:windowSoftInputMode="stateVisible">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,8 +27,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.matrixdeveloper.chatsapp.Activities.MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <service android:name=".services.ProviderFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <meta-data
             android:name="preloaded_fonts"

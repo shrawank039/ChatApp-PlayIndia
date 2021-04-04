@@ -2,21 +2,30 @@ package com.matrixdeveloper.chatsapp.Models;
 
 public class User {
 
-    private String uid, name, phoneNumber, profileImage,admin,user;
+    private String uid, token, name, phoneNumber, profileImage,admin,user;
     private long timestamp;
 
     public User() {
 
     }
 
-    public User(String uid, String name, String phoneNumber, String profileImage,String admin,String user, long timestamp) {
+    public User(String uid, String token, String name, String phoneNumber, String profileImage, String admin, String user, long timestamp) {
         this.uid = uid;
+        this.token = token;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.profileImage = profileImage;
         this.admin = admin;
         this.user = user;
         this.timestamp = timestamp;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getAdmin() {

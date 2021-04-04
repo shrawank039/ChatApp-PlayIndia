@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -43,6 +45,7 @@ public class SetupProfileActivity extends AppCompatActivity {
     FirebaseStorage storage;
     Uri selectedImage;
     ProgressDialog dialog;
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,21 @@ public class SetupProfileActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         getSupportActionBar().hide();
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        token = task.getResult();
+                        Log.d("TAG", "fcm token : " + token);
+
+                    }
+                });
 
         binding.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +116,7 @@ public class SetupProfileActivity extends AppCompatActivity {
 
                                         Date date = new Date();
 
-                                        User user = new User(uid, name, phone, imageUrl,"0","0", date.getTime());
+                                        User user = new User(uid, token, name, phone, imageUrl,"0","0", date.getTime());
 
                                         database.getReference()
                                                 .child("users")
@@ -122,7 +140,7 @@ public class SetupProfileActivity extends AppCompatActivity {
 
                     Date date = new Date();
 
-                    User user = new User(uid, name, phone, "No Image","0","0", date.getTime());
+                    User user = new User(uid, token, name, phone, "No Image","0","0", date.getTime());
 
                     database.getReference()
                             .child("users")

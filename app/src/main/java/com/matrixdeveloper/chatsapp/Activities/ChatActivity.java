@@ -44,6 +44,9 @@ public class ChatActivity extends AppCompatActivity {
     private String mPhotoUrl="";
     private static final String LOADING_IMAGE_URL = "https://www.google.com/images/spin-32.gif";
     String receiverUid;
+    private String FCM_API = "https://fcm.googleapis.com/fcm/send";
+    private String serverKey = "key=" + "AAAAyGv7NeE:APA91bE51Q9lLGbUq5htj1itHU3bQLUlIn6HARJWN62A7o-4M3gPkIFzPOr13yn4_l7bOE4Q10O1GP-s9cnhGiN_ElQfBNPt_cSWcPoeg881mW1CrNEz_ZyS-WeUMOKSyHf3zw5p5lQj";
+    private String contentType = "application/json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
